@@ -1,0 +1,233 @@
+
+/* login form */
+
+#login_form
+{
+	margin: 20px auto 20px auto;	
+}
+
+#login_form label
+{
+	padding-top: 5px;	
+	padding-right: 5px;	
+	clear: left;
+	color: #444;
+}
+
+#login_form div
+{
+	margin-top:5px;
+	margin-bottom: 10px;
+}
+
+#login_form a
+{
+	text-decoration:none;
+	font-weight:bold;
+}
+
+#login_form input[type="text"], #login_form input[type="password"]
+{
+	margin-top:2px;
+	margin-bottom: 2px;
+	width:200px; 
+}
+
+#login_form ul
+{
+	list-style:none;
+}
+
+/* login form */
+
+/* register form */
+#register_form
+{
+	margin: 20px auto 20px auto;	
+}
+
+#register_form label
+{
+	clear: left;
+	padding-top: 5px;	
+	padding-right: 8px;	
+	color: #555;
+}
+
+#register_form input[type="text"], 
+#register_form input[type="password"],
+#register_form select
+{
+	margin-top:2px;
+	margin-bottom: 2px;
+	width:330px; 
+}
+
+#register_form input[type="checkbox"] 
+{
+	margin-top:6px;
+	margin-bottom: 6px;
+}
+
+#register_form ul
+{
+	list-style:none;
+}
+
+#picture_form
+{
+	margin: 20px auto 20px auto;	
+}
+
+#picture_form div
+{
+	text-align: center;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+fieldset label 
+{
+	width: 100px;
+	font-weight:bold;
+}
+
+#checkEmail
+{
+	background: url(../images/checking.gif) no-repeat;
+	background-position: -20px 0;
+}
+
+#checkEmail.ok
+{
+	color: Green;
+}
+
+#checkName.ok
+{
+	color: Green;
+}
+
+#checkEmail .failed
+{
+	color: Red;
+}
+
+#checkName .failed
+{
+	color: Red;
+}
+
+#checkEmail .checking
+{
+	background: url(../images/checking.gif) no-repeat;
+	padding-left: 20px;
+}
+
+#captcha img
+{
+	border: 1px solid #ccc;
+}
+
+#refresh_captcha
+{
+	display: inline-block;
+    width:26px;
+    height:26px;
+    background: url(../images/refresh-button.png) no-repeat;
+    cursor:pointer;
+}
+
+#captcha .checking
+{
+	background: url(../images/checking.gif) no-repeat;
+	background-position:center center;
+	display: inline-block;
+	width: 200px;
+	height: 70px;
+	border: 1px solid #ccc;
+}
+
+@media (max-width: 719px) {
+    #login_form input[type="text"], #login_form input[type="password"]
+    {
+        display:block;
+    }
+
+    #login_form, #picture_form, #register_form
+    {
+	    padding-left:10px;
+    }
+
+    #register_form input[type="text"], #register_form input[type="password"], #register_form select
+    {
+        width:260px; 
+    }
+}
+
+@media (min-width: 720px) {
+       
+    #login_form
+    {
+	    width:450px;
+    }
+
+    #login_form label
+    {
+	    float: left;
+	    width: 140px;
+	    text-align: right;
+    }
+
+    #register_form
+    {
+	    width:700px;
+    }
+
+    #register_form label
+    {
+	    float: left;
+	    width: 160px;	
+	    text-align: right;
+    }
+
+    #register_form input[type="text"], 
+    #register_form input[type="password"],
+    #register_form select
+    {
+	    margin-top:2px;
+	    margin-bottom: 2px;
+    }
+
+    #picture_form
+    {
+	    width:520px;
+    }
+}
