@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define  Input        	freopen("input.txt", "r", stdin)
-#define  Output			freopen("output.txt", "w", stdout)
+#define  Input			freopen("E:/code/testing/input.txt", "r", stdin)
+#define  Output			freopen("E:/code/testing/output.txt", "w", stdout)
 #define  fu(i,a,b) 		for(int i=(a); i<=(b); ++i)
 #define  fd(i,a,b) 		for(int i=(a); i>=(b); --i)
 #define  fo(i,n) 		for(int i=0; i<(n); ++i)
@@ -28,51 +28,49 @@ inline ll diMod(ll A, ll B){(A * fpow(B, Base-2)) % Base;};		//tinh (A/B) % Base
 //declare
 ll q;
 ll l,r;
-ll ktt[max]={0};
+ll Prime[1000005]={0};
+ll ans[1000005];
 //============//
 
-ll kt(ll L, ll R)
+void IsPrime()
 {
-	ll count=0;
-//	if(r&1!=1) r--;
-	for(ll i=3;i<=R;i+=2)
+	for(ll i=2;i*i<=1000000;i++)
 	{
-		if(ktt[i]==1)continue;
-		for(ll j=i*2;j<=R;j+=i)
+		if(Prime[i]==0)
 		{
-			ktt[j]=1;
-		}	
-		 if((i<l&&i*i>r)) continue;
-		 else count+=i;
+			for(ll j=i*i;j<=1000000;j+=i)
+				if(Prime[j]==0)
+					Prime[j]=i;
+		}
 	}
-	cout<<count<<endl;
-	return count;
-
+	for(ll i=2;i<=1000000;i++)
+		if(Prime[i]==0)
+			Prime[i]=i;
 }
 
 void solve()
 {
-	cin>>q;
+	IsPrime();
+	ll sum=0;
+	ans[1]=0;
+	for(ll i=2;i<=1000000;i++)
 	
-	for(ll i=1;i<=q;i++)
+		ans[i]=ans[i-1]+Prime[i];
+	scanf("%lld",&q);
+	for(ll i=0;i<q;i++)
 	{
-		cin>>l>>r;
-		ll s=0;
-		if((l&1==1)&&(r&1==1))
-			s+=2*((r-l)/2);
-		else 
-			s+=2*((r-l)/2+1);
-//		if((l&1)!=1) l+=1;
-		cout<<s<<endl;
-		cout<<s+kt(l,r)<<endl;	
+		scanf("%lld%lld",&l,&r);
+//		cout<<ans[r]<<" "<<ans[l-1]<<endl;
+		printf("%lld \n",ans[r]-ans[l-1]);
 	}
+	
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-	//Input;
-	//Output;
+//	ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+//	Input;
+//	Output;
 	solve();
 	return 0;
 }

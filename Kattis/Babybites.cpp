@@ -9,35 +9,19 @@ using namespace std;
 
 void Solves()
 {
-    ll n,pos=0; 
+    ll n,pos=0;
+	string s; 
     cin>>n;
-    ll a[n+5]={0};
+	cin.ignore();
    for(ll i=1;i<=n;i++)
    {
-		string s;
-   		cin>>s;
-		if(s.length()==1)
-		{
-			if(pos<s[0]-48)
-			{
-				pos=s[0]-48;
-			}
-			a[s[0]-48]+=1;
-		}
-		else
-		{
-			pos=i;
-			a[i]++;	
-		} 
-   }
-   for(ll i=1;i<=pos;i++)
-   {
-//   		cout<<a[i]<<" ";
-		if(a[i]!=1)
+		cin>>s;
+		if(s=="mumble")
+			continue;
+		if(to_string(i)!=s)
    		{
    			cout<<"something is fishy";
-   			return ;
-   			
+   			return ;	
 		}
    }
    cout<<"makes sense";

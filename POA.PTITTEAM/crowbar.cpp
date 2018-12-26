@@ -13,7 +13,7 @@ using namespace std;
 
 double convert(string s)
 {
-  float up = atof(s.c_str());
+  double up = atof(s.c_str());
   return up;
 }
 
