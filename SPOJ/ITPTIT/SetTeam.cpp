@@ -7,43 +7,43 @@ using namespace std;
 #define  buff			ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define  Input			freopen("E:/code/testing/input.txt", "r", stdin)
 #define  Output			freopen("E:/code/testing/output.txt", "w", stdout)
-#define  mod107			1000000007;
+#define  ms(a,x)    	memset(a, x, sizeof(a))
+#define  all(x)         (x).begin(), (x).end()
+#define	 fst			first
+#define	 snd			second
+#define  allarr(x,n)	(x, x+n)
+#define  pb				push_back
+#define  mp				make_pair
 
 //====================================================================================================
-
-ll score[105][105], sum[105][105];
-
+ll n;
+//-----------------------------
 void Solves()
 {
-	ll k;
-	cin>>k;
- 	for(ll i=1;i<=k;i++)
- 	{
-	 	for(ll j=1;j<=i;j++)
-		 	cin>>score[i][j];
-	}
-	
- 	sum[1][1]=score[1][1];
-	for(ll i=2;i<=k;i++)
+	cin>>n;
+	ll a[n+5];
+	for(ll i=0;i<n;i++)
 	{
-		for(ll j=1;j<=i;j++)
+		cin>>a[i];
+	}
+	sort(a,a+n);
+	ll j=0,result = -1;
+	for(ll i=0;i<n;i++)
+	{
+		while(j<n&&a[j]-a[i]<=5)
 		{
-			sum[i][j]=score[i][j] + max(sum[i-1][j-1],sum[i-1][j]);
-//			cout<<score[i][j]<<" "<<result[i-1][j-1]<<" "<<result[i-1][j]<<endl;
-			
+			result= max(result,j-i+1);
+			j++;
 		}
 	}
-	ll result=0;
-	for(ll i=1;i<=k;i++)
-		result=max(result,sum[k][i]);	
-	cout<<result;
+	cout<<result<<endl;
 }
 
 int main()
 {
     buff;
 //    Input;
-    //Output;
+//    Output;
     Solves();
     return 0;
 }
