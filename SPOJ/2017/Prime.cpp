@@ -6,7 +6,7 @@ using namespace std;
 #define  fix_set(x)     fixed<<setprecision(x)
 #define  buff			ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define  Input			freopen("E:/code/testing/input.txt", "r", stdin)
-#define  Output			freopen("E:/code/testing/input.txt", "w", stdout)
+#define  Output			freopen("E:/code/testing/output.txt", "w", stdout)
 #define  ms(a,x)    	memset(a, x, sizeof(a))
 #define  all(x)         (x).begin(), (x).end()
 #define	 fst			first
@@ -16,25 +16,68 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll Prime[10000005];
+ll arr[10000007];
+ll a,b,k,t,Count;
+vector <ll> Primes;
 //-----------------------------
+
+void isPrime()
+{
+	for(ll i=2;i<=10000000;i++)
+	{
+		Prime[i]=1;
+		arr[i] = 0;
+	}
+	for(ll i=2;i*i<=10000000;i++)
+	{
+		if(Prime[i]==1)
+		{
+			for(ll j=i*i;j<=10000000;j+=i)
+			{
+					Prime[j]=0;
+			}
+		}
+	}
+	for(ll i=2;i<=10000000;i++)
+	{
+		if(Prime[i]==1)
+			Primes.pb(i);
+	}
+    
+	for(ll i=0;i<Primes.size();i++)
+	{
+		for(ll j=1;j<=10000000/Primes[i];j++)
+			arr[j*Primes[i]]++;
+	}
+}
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	isPrime();
+	scanf("%lld", &t);
+	ll pc = t;
+	while(t--)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		Count=0;
+		scanf("%lld %lld %lld", &a,&b,&k);   
+		for(ll i=a;i<=b;i++)
+		{
+			if(arr[i]==k)
+			{
+				++Count;
+//				cout<<i<<" "<<Count<<endl;
+			}
+		}
+		printf("Case #%lld: %lld\n",pc-t,Count);
 	}
-	
 }
 
 int main()
 {
-    buff;
+//    buff;
 //    Input;
-//    Output;
+//    	Output;
 //    clock_t start, end;
 //    	double time_use;
 //    start = clock();

@@ -16,17 +16,56 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
+string s[1005];
+ll row[1005]={0},col[1005]={0},n,m;
+ll Countw=0,poscow=0,poscol=0;
 
 //-----------------------------
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>n>>m;
+	for(ll i=0;i<n;i++)
+		cin>>s[i];
+	for(ll i=0;i<n;i++)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		for(ll j=s[i].find("*");j<s[i].length();j++)
+		{
+			if(s[i][j]=='*')
+			{
+				Countw++;
+				row[i]++;
+				col[j]++;				
+			}	
+		}
 	}
+//	cout<<Countw<<"+++"<<endl;
+	for(ll i=0;i<n;i++)
+	{
+//		cout<<s[i]<<endl;
+		for(ll j=s[i].find("*");j<s[i].length();j++)
+		{
+			if(row[i]!=0&&col[j]!=0)
+			{
+				if((row[i]+col[j]-1 == Countw)||(row[i]+col[j] == Countw))
+				{
+//					cout<<i<<" "<<j<<endl;
+					poscow=i+1;
+					poscol=j+1;
+				}
+			}
+		}
+
+	}
+		if(poscow!=0&&poscol!=0)
+		{
+			cout<<"YES"<<endl;
+			cout<<poscow<<" "<<poscol;
+		}
+		else
+		{
+			cout<<"NO"<<endl;
+		}
 	
 }
 

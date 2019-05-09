@@ -1,6 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
-
+#include<bits/stdc++.h> 
+using namespace std; 
+  
 #define  ll             long long
 #define  db             double
 #define  fix_set(x)     fixed<<setprecision(x)
@@ -15,19 +15,38 @@ using namespace std;
 #define  pb				push_back
 #define  mp				make_pair
 
-//====================================================================================================
-
-//-----------------------------
+string s;
+ll suffix[10005][10005];
 
 void Solves()
-{
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
-	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
-	}
-	
+{  
+	cin>>s;                            
+    ms(suffix, 0); 
+    string ans;  
+  	ll len = 0,it = 0;  
+    for (ll i=1; i<=s.length(); i++) 
+    { 
+        for (ll j=i+1; j<=s.length(); j++) 
+        { 
+            if (s[i-1] == s[j-1]) 
+            { 
+                suffix[i][j] = suffix[i-1][j-1] + 1; 
+
+                if (suffix[i][j] > len) 
+                { 
+                    len = suffix[i][j]; 
+                    it = max(i, it); 
+                } 
+            } 
+            else
+               suffix[i][j] = 0; 
+        } 
+    } 
+    if (len > 0) 
+        for (ll i = it - len + 1; i <= it; i++) 
+            ans+=s[i-1]; 
+  
+    cout<<ans; 
 }
 
 int main()

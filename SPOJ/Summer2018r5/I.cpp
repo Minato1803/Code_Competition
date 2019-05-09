@@ -16,17 +16,34 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll n,a;
+vector<ll>pows;
+vector<ll>::iterator low;
 //-----------------------------
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	for(int i=1;i<=40001;i++) 
+		pows.push_back(i*i);
+	cin>>n;
+	while(n--)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>a;
+		ll x,y;
+		low=upper_bound(pows.begin(),pows.end(),a) - 1;
+		for(int i=low-pows.begin();i>=0;i--)
+			{
+				if(a%pows[i]==0)
+				{
+					x=i;
+					y=a/pows[i];
+					break;
+				}
+			}
+		cout<<x+1<<" "<<y<<endl;
+		
 	}
+	
 	
 }
 

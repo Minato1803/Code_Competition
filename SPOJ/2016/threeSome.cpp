@@ -16,18 +16,48 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll n,a;
+//vector <ll> abil;
 //-----------------------------
+
+ll comp(ll a,ll b, ll c)
+{
+	ll tmp = max(a,b);
+	tmp = max(tmp,c);
+	return tmp;
+}
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>n;
+	ll prob[n+5][11];
+	for(ll i=0;i<n;i++)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		for(ll j=0;j<11;j++)
+		{
+			cin>>prob[i][j];
+		}
 	}
-	
+	ll ans = -1;
+	for(ll i=0;i<n-2;i++)
+	{
+		for(ll j=i+1;j<n-1;j++)
+		{
+			for(ll it=j+1;it<n;it++)
+			{
+				ll tmp = 0;
+				for(ll k=0;k<11;k++)
+				{
+					tmp+= comp(prob[i][k],prob[j][k],prob[it][k]);
+				}
+				if(tmp>ans)
+				{
+					ans = tmp;
+				}
+			}
+		}
+	}
+	cout<<ans<<endl;
 }
 
 int main()

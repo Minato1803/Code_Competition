@@ -16,18 +16,34 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+string s;
 //-----------------------------
+
+ll check(string s)
+{
+	ll Count = 0;
+	for(ll i=0;i<s.length();i++)
+	{
+		Count += (s[i]-48);
+	}
+	if(Count%3==0&&(s[s.length()-1]-48) % 2==0)
+		return 1;
+	else
+		return 0;	
+}
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	ll t;
+	cin>>t;
+	while(t--)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>s;
+		if(check(s))
+			cout<<"YES"<<endl;
+		else
+			cout<<"NO"<<endl;	
 	}
-	
 }
 
 int main()

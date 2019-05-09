@@ -16,18 +16,28 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll t,n;
 //-----------------------------
+
+ll counter(ll n)
+{
+	ll Count=0;
+	while(n%2==0)
+	{
+		n/=2;
+		Count++;
+	}
+	return Count;
+}
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>t;
+	while(t--)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>n;
+		cout<<counter(n)<<endl;
 	}
-	
 }
 
 int main()

@@ -16,18 +16,35 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll n,m,k,a;
+map <ll,ll> Count;
 //-----------------------------
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>n>>m>>k;
+	ll Suma = 0;
+	ll b;
+	for(ll i=0;i<n;i++)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>a;
+		Count[a]++;
 	}
-	
+	ll Sum=0;
+	for(ll i=0;i<m;i++)
+	{
+		cin>>b;
+		if(b !=0 &&k%b==0)
+		{
+				Sum += Count[k/b];	
+		}
+		else if(b==0 && k==0)
+			{
+				Sum+=n;
+			}
+//		cout<<Count[k/b]<<"***"<<endl;
+	}
+	cout<<Sum<<endl;
 }
 
 int main()

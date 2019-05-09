@@ -16,18 +16,69 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll a, b, n = 1;
 //-----------------------------
 
+bool isPrime(ll x)
+{
+	if (x < 2)
+		return false;
+	for (ll i = 2; i <= sqrt(x); i++)
+	{
+		if (x % i == 0)
+			return false;
+	}
+	return true;
+}
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin >> a >> b;
+	if (a == b)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		n = 1;
 	}
-	
+	else
+	{
+		if (a < b)
+		swap(a, b);
+		if ((a-b) > b)
+		{
+			if (isPrime(a-b))
+			{
+				n = a-b-b;
+			}
+			else
+			{
+				n = 1e9+7;
+				for (ll i = 1; i <= sqrt(a-b); i++)
+				{
+					if ((a-b)%i == 0)
+					{
+						if (i > b)
+							n = min(n, (i-b));
+						if ((a-b)/i > b)
+							n = min(n, ((a-b)/i-b));
+					}
+				}
+			//	cout << n << endl;
+			}
+		}
+		else
+		{
+			n = (a/(a-b)+1)*(a-b) - a;
+		}
+	}
+	cout << n << endl;
+//	ll test = (a+1)*(b+1)/__gcd(a+1, b+1), tmp = 1;
+//	for (ll i = 2; i <= 50000; i++)
+//	{
+//		if (((a+i)*(b+i)/__gcd(a+i, b+i)) < test)
+//		{
+//			test = (a+i)*(b+i)/__gcd(a+i, b+i);
+//			tmp = i;
+//		}
+//	}
+//	cout << tmp << " " << test;
 }
 
 int main()

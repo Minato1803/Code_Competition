@@ -16,16 +16,80 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll t,n ;
+ll Num[7];
+ll x[10] = {0};
+bool check =1;
 //-----------------------------
+
+void cases()
+{
+	int i= 5;
+	while(i>0&&x[i]!=0)
+	{
+		x[i] = 0;
+		i--;
+	}
+	if(i>0)
+		x[i] = 1;
+	else check = 0;	
+}
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	
+	cin>>t;
+	while(t--)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>n;
+		ll Sum=n;
+		for(ll i=1;i<=5;i++)
+			cin>>Num[i];
+//		for(ll i=1;i<=5;i++)
+//		{
+//			tmp = n/Num[i]+1;
+//			n-= tmp;
+//		}
+//		for(ll i=1;i<=4;i++)
+//		{
+//			for(ll j=i+1;j<=5;j++)
+//			{
+//				ll Numer =Num[i]*Num[j];
+//				tmp = n/Numer+1;
+//				n+=tmp;	
+//			}
+//		}	
+		while(check)
+		{
+			cases();
+			ll Numer =1;
+			ll  Count=0;
+//			for(ll i=1;i<=5;i++)
+//			cout<<x[i]<<" ";
+//			cout<<endl;	
+			//vector <ll> point;
+			for(ll i=1;i<=5;i++)
+			{
+				
+				if(x[i]==1)
+				{
+					Count++;
+					Numer *=Num[i];
+//					 point.pb(Num[i]);
+				}
+			}
+			ll tmp = Sum/Numer;
+//			cout<<"point: ";
+//			for(ll i=0;i<point.size();i++)
+//				cout<<point[i]<<" ";
+//				cout<<"tmp: ";
+//			cout<<tmp<<endl;
+			if(Count!=0)
+				Count%2!=0?n-=tmp:n+=tmp;
+		}
+		check=1;
+		ms(x,0);
+		cout<<n<<endl;
 	}
 	
 }

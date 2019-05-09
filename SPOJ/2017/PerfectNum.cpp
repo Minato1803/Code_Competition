@@ -16,24 +16,42 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll t,n;
 //-----------------------------
+
+ll checkSum(ll n)
+{
+	ll Sum=0;
+	for(ll i=1;i<=sqrt(n);i++)
+	{
+		if(n % i==0)
+		{
+			Sum+=i;
+			if(i != (n/i))
+				Sum+=n/i;
+		}
+	}
+	return Sum;
+}
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>t;
+	while(t--)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>n;
+		ll tmp = checkSum(n);
+		if(checkSum(tmp) == 2*n )
+			cout<<"YES"<<endl;
+		else
+			cout<<"NO"<<endl;	
 	}
-	
 }
 
 int main()
 {
     buff;
-//    Input;
+    Input;
 //    Output;
 //    clock_t start, end;
 //    	double time_use;

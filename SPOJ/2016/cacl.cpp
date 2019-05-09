@@ -16,18 +16,37 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll n,k;
 //-----------------------------
+
+bool cmp(ll a,ll b)
+{
+	return a>b;
+}
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>n>>k;
+	ll a[n+5];
+	for(ll i=0;i<n;i++)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>a[i];
 	}
-	
+	sort(a+1,a+n,cmp);
+//	for(ll i=0;i<n;i++)
+//	{
+//		cout<<a[i];
+//	}
+	ll sum = a[0];
+	for(ll i=1;i<=k;i++)
+	{
+		sum+=a[i];
+	}
+	for(ll i=k+1;i<n;i++)
+	{
+		sum-=a[i];
+	}
+	cout<<sum<<endl;
 }
 
 int main()

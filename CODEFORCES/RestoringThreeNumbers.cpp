@@ -16,17 +16,21 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll num[5];
 //-----------------------------
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	for(ll i=0;i<4;i++)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>num[i];
 	}
+	sort(num,num+4);
+	ll a,b,c;
+	c = num[3] - num[0];
+	a = num[1] - c;
+	b = num[2] - c;
+	cout<<a<<" "<<b<<" "<<c<<endl;  
 	
 }
 

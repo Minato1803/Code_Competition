@@ -14,20 +14,51 @@ using namespace std;
 #define  allarr(x,n)	(x, x+n)
 #define  pb				push_back
 #define  mp				make_pair
-
+#define  modNum			1000000007
 //====================================================================================================
-
+ll n,m,base,ans=1;
 //-----------------------------
+inline ll fpow(ll a, ll x, ll Base)
+{
+	if(x==0)return 1;	
+	if(x&1) 
+	{
+		return a*fpow(a, x-1, Base)%Base;
+	} 
+	else
+	{
+		ll t=fpow(a, x/2, Base);
+		return t*t%Base;
+	}
+}
 
+inline ll diMod(ll A, ll B, ll Base)
+{
+	//(A/B)%Base
+	ll result = (A * fpow(B, Base-2, Base)) % Base; 
+	return result;
+}
+//111111111
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>n>>m;
+	if(n%m==0)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		base = n/m-1;
+		ans = 2;
 	}
-	
+	else
+	{
+		base = n/m;
+		ans =1;
+	}
+	ll tmp = n-m+1;
+	cout<<tmp<<" "<<base<<endl;
+	ll A = (base%modNum*(2*(tmp%modNum)%modNum+((base-1)%modNum*(-(m%modNum)))%modNum)%modNum)%modNum;
+	ll B = 2;
+	ans += diMod(A,B,modNum);
+	cout<<ans<<endl;
+
 }
 
 int main()

@@ -16,18 +16,36 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll n,t,s,d;
+vector < pair<ll, ll> > route;
 //-----------------------------
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>n>>t;
+	for(ll i=1;i<=n;i++)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>s>>d;
+		route.pb(mp(s,d));
 	}
-	
+	ll Min = 1000000000000000000;
+	ll Minpos=0;
+	for(ll i=0;i<n;i++)
+	{
+		if(route[i].first==t)
+		{
+			cout<<i+1<<endl;
+			return;
+		}
+		ll tmp = (t/route[i].second)*route[i].second + route[i].first;
+		if(tmp<Min)
+		{
+			Min = tmp;
+			Minpos =i+1;
+		}
+		cout<<tmp<<endl;
+	}
+	cout<<Minpos<<endl;
 }
 
 int main()

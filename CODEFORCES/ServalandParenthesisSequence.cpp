@@ -16,22 +16,89 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll n, braceOpen = 0;
+string s;
+stack <ll> Count;
 //-----------------------------
+
+
+
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>n>>s;
+	
+	if(s.length()%2!=0 || s[0]==')' || s[n-1] == '(')
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cout<<":("<<endl;
+		return;
 	}
+	else
+	{
+		s[0] = '(';
+		s[n-1] = ')'; 
+	}
+	
+	for(ll i=1;i<s.length()-1;i++)
+	{
+		if(s[i]=='?')
+		{
+			if(braceOpen<=0)
+			{
+				s[i] = '(';
+				braceOpen++;
+			}
+			else
+			{
+				s[i] = ')';
+				braceOpen--;
+				Count.push(i);
+			}
+		}
+		else
+			if(s[i] == '(')
+			{
+				braceOpen++;
+			}
+			else
+				if(s[i]==')')
+				{
+					if(braceOpen>0)
+					{
+						braceOpen--;
+					}
+					else
+					{
+						if(Count.size()!=0)
+						{
+							ll tmp = Count.top();
+//							cout<<tmp<<" "<<braceOpen<<endl;
+							Count.pop();
+							s[tmp] = '(';
+							braceOpen++;
+						}
+						else
+						{
+							cout<<":("<<endl;
+							return;
+						}
+					}
+				}
+	}
+	if(braceOpen>0)
+	{
+		cout<<":("<<endl;
+		return;
+	}
+		
+	cout<<s<<endl;
 	
 }
 
 int main()
 {
+	//	6
+	//	(??)))
     buff;
 //    Input;
 //    Output;

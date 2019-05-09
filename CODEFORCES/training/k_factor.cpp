@@ -16,18 +16,47 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll prime[100005]={0};
+ll n,k,Count=0;
+vector <ll> fact;
 //-----------------------------
+
+void isPrime()
+{
+	for(ll i=2;i*i<=100000;i++)
+	{
+		if(prime[i]==0)
+		{
+			for(ll j=i*i;j<=100000;j+=i)
+				if(prime[j]==0)
+					prime[j]=i;
+		}
+	}
+	for(ll i=0;i<=100000;i++)
+		if(prime[i]==0)
+			prime[i]=i;
+}
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	isPrime();
+	cin>>n>>k;
+	while(n>1)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		if(Count==k-1)
+			break;
+		Count++;
+		fact.pb(prime[n]);
+		n/=prime[n];
 	}
-	
+	if(n == 1)
+		cout<<-1<<endl;
+	else
+	{
+		for(ll i=0;i<k-1;i++)
+			cout<<fact[i]<<" ";
+		cout<<n;	
+	}	
 }
 
 int main()

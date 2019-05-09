@@ -16,18 +16,47 @@ using namespace std;
 #define  mp				make_pair
 
 //====================================================================================================
-
+ll n;
+map <ll,ll> Count;
+map <ll,ll>:: iterator it;
+vector <ll> ans;
 //-----------------------------
+
+bool cmp(ll a,ll b)
+{
+	return a>b;
+}
 
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	cin>>n;
+	ll Num[n*n+5];
+	for(ll i=0;i<n*n;i++)
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		cin>>Num[i];
+		Count[Num[i]]++;
 	}
-	
+	sort(Num,Num+(n*n),cmp);
+	for(ll i=0;i<n*n;i++)
+	{
+//		cout<<Num[i]<<" "<<Count[Num[i]]<<"first "<<endl;
+		if(Count[Num[i]]>0)
+		{
+			Count[Num[i]]--;
+			ans.pb(Num[i]);
+//			cout<<endl;
+			    for(ll j=0;j<ans.size()-1;j++)
+				{
+					ll tmp = __gcd(ans[j],ans[ans.size()-1]);
+//					cout<<ans[j]<<" "<<ans[ans.size()-1]<<"****"<<endl;
+					Count[tmp]-=2;
+//					cout<<tmp<<" ";
+//					cout<<Count[tmp]<<endl;
+				}
+		}
+	}
+	for(ll i=0;i<ans.size();i++)
+		cout<<ans[i]<<" ";
 }
 
 int main()
