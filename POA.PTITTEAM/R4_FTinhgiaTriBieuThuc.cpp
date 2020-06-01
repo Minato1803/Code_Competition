@@ -15,14 +15,16 @@ ll numeric(char c)
 	return c-48;
 }
 
-ll calc(ll a, ll b,char t)
+double calc(double a, double b,char t)
 {
 	if(t=='*')
 		return a*b;
 	if(t=='-')
 		return a-b;	
 	if(t=='+')
-		return a+b;			
+		return a+b;	
+	if(t=='/')
+		return a/b;			
 }
 
 int main()

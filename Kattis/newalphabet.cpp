@@ -65,7 +65,8 @@ void Solves()
 int main()
 {
     buff;
-//    input; output;
+//    input;
+	 output;
 	Solves();
     return 0;
 }

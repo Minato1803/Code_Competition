@@ -18,15 +18,108 @@ using namespace std;
 //====================================================================================================
 
 //-----------------------------
-
+long long calc(long long a, long long b)
+{
+	return sqrt((a-b)*(a-b));
+}
 void Solves()
 {
-	cout<<50<<endl;
-	for(ll i=1;i<=50;i++)
+	vector <int> a,b;
+	a= {1,1,2,2};
+	b = {2,2,6,4}; 
+	long long SA = calc(a[0],a[2]) * calc(a[1], a[3]);
+	long long SB = calc(b[0],b[2])*calc(b[1], b[3]);
+	long long tmp[5] = {0};
+	bool check =1;
+	if(a[0] < b[0])
 	{
-		cout<<9223372037000000000<<endl;
-		cout<<"2 3 5 7 11"<<endl;
+		if(a[2] > b[0])
+		{
+			tmp[0] = b[0];
+			if(a[2] <= b[2] )
+			{
+				tmp[2] = a[2];
+			}
+			else
+			{
+				tmp[2] = b[2];
+			}
+		}
+		else
+			check = 0;	
 	}
+	else
+	{
+		if(b[2] < a[0])
+		{
+			tmp[0] = b[0];
+			if(a[2] <= b[2] )
+			{
+				tmp[2] = a[2];
+			}
+			else
+			{
+				tmp[2] = b[2];
+			}
+		}
+		else
+			check = 0; 
+	}
+	
+	if(a[1] < b[1])
+	{
+		if(a[3] > b[1])
+		{
+			tmp[1] = b[1];
+			if(a[3] <= b[3] )
+			{
+				tmp[3] = a[3];
+			}
+			else
+			{
+				tmp[3] = b[3];
+			}
+		}
+		else
+			check = 0;	
+	}
+	else
+	{
+		if(b[3] < a[1])
+		{
+			tmp[1] = b[1];
+			if(a[3] <= b[3] )
+			{
+				tmp[3] = a[3];
+			}
+			else
+			{
+				tmp[3] = b[3];
+			}
+		}
+		else
+			check = 0; 
+	}
+	long long ST  = 0;
+	long long result = 0;
+	cout<<SA<<" "<<SB<<endl;
+	if(check == 1)
+	{
+		long long ST = calc(tmp[0],tmp[2]) * calc(tmp[1], tmp[3]);
+		result = SA+SB-ST*2;
+	}
+	else
+	{
+		if(b[0] == a[0] &&b[1] == a[1] &&b[2] == a[2] &&b[3] == a[3])
+			return 0;
+//cout<<0;
+		else
+			return SA+SB
+//cout<<SA+SB;	
+			
+	}
+	return result;
+//	cout<< result<<endl;
 	
 }
 

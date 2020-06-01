@@ -26,7 +26,8 @@ int main()
 		if(k-i<=i) break;
 		if(re[k-i]>=re[i])
 			re[i] = 0;
-		re[k-i] = 0;
+		else	
+			re[k-i] = 0;
 	}
 	
 	if(re[0]>0)
