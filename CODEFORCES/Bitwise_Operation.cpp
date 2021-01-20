@@ -75,7 +75,7 @@ int main()
 //Tính 2^n:
 	//2 <<(n-1);
 
-//Kiem tra xem n có phai giai thua cua 2 hay không:
+//Kiem tra xem n có phai luy thua cua 2 hay không:
 	ll n=3;
 	n > 0?(n & (n - 1)) == 0: false;
 	return 0;
